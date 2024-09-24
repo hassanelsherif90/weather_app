@@ -3,10 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
 import 'package:weather_app/main.dart';
 import 'package:weather_app/models/weather_model.dart';
-import 'package:weather_app/widgets/weather_themes.dart';
 
 class WeatherInfoBody extends StatelessWidget {
-  const WeatherInfoBody({Key? key, required this.weather, }) : super(key: key);
+  const WeatherInfoBody({
+    Key? key,
+    required this.weather,
+  }) : super(key: key);
 
   final WeatherModel? weather;
   @override
@@ -14,17 +16,12 @@ class WeatherInfoBody extends StatelessWidget {
     var weatherModel = BlocProvider.of<GetWeatherCubit>(context).weatherModel;
 
     return Container(
-      decoration: BoxDecoration(gradient:LinearGradient(colors: [
-
+      decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [
         getThemeColor(weatherModel?.weatherCondition),
         getThemeColor(weatherModel?.weatherCondition)[300]!,
         getThemeColor(weatherModel?.weatherCondition)[50]!,
-
-      ],
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter
-      )
-      ),
+      ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
